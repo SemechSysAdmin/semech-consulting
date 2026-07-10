@@ -1,0 +1,169 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Brand tokens */
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-gold: var(--gold);
+  --color-gold-soft: var(--gold-soft);
+  --color-charcoal: var(--charcoal);
+  --color-paper: var(--paper);
+  --color-stone: var(--stone);
+  --color-line: var(--line);
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+
+  --shadow-elegant: 0 20px 50px -20px color-mix(in oklab, var(--navy) 35%, transparent);
+  --shadow-card:
+    0 1px 0 0 color-mix(in oklab, var(--navy) 6%, transparent),
+    0 12px 30px -18px color-mix(in oklab, var(--navy) 18%, transparent);
+
+  --animate-fade-up: fade-up 0.7s cubic-bezier(0.19, 1, 0.22, 1) both;
+  --animate-fade-in: fade-in 0.6s ease-out both;
+}
+
+:root {
+  --radius: 0.375rem;
+
+  /* Brand */
+  --navy: oklch(0.22 0.04 260);
+  --navy-deep: oklch(0.17 0.04 260);
+  --gold: oklch(0.62 0.11 70);
+  --gold-soft: oklch(0.78 0.09 80);
+  --charcoal: oklch(0.2 0.01 270);
+  --paper: oklch(0.99 0.003 95);
+  --stone: oklch(0.97 0.005 95);
+  --line: oklch(0.92 0.005 260);
+
+  /* Shadcn semantic mapping */
+  --background: var(--stone);
+  --foreground: var(--charcoal);
+  --card: var(--paper);
+  --card-foreground: var(--charcoal);
+  --popover: var(--paper);
+  --popover-foreground: var(--charcoal);
+  --primary: var(--navy);
+  --primary-foreground: var(--paper);
+  --secondary: oklch(0.95 0.01 260);
+  --secondary-foreground: var(--navy);
+  --muted: oklch(0.96 0.005 260);
+  --muted-foreground: oklch(0.5 0.01 260);
+  --accent: var(--gold);
+  --accent-foreground: var(--navy);
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: var(--paper);
+  --border: var(--line);
+  --input: var(--line);
+  --ring: var(--gold);
+}
+
+.dark {
+  --background: var(--navy-deep);
+  --foreground: var(--paper);
+  --card: var(--navy);
+  --card-foreground: var(--paper);
+  --popover: var(--navy);
+  --popover-foreground: var(--paper);
+  --primary: var(--gold);
+  --primary-foreground: var(--navy);
+  --secondary: oklch(0.28 0.04 260);
+  --secondary-foreground: var(--paper);
+  --muted: oklch(0.27 0.04 260);
+  --muted-foreground: oklch(0.7 0.02 260);
+  --accent: var(--gold);
+  --accent-foreground: var(--navy);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: var(--gold);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv02", "cv03", "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply max-w-7xl mx-auto px-6 lg:px-8;
+  }
+  .eyebrow {
+    @apply text-gold text-[11px] font-semibold uppercase tracking-[0.3em];
+  }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 bg-navy text-paper py-2.5 pr-4 pl-3 rounded-sm text-sm font-medium ring-1 ring-navy hover:bg-navy-deep transition-all;
+  }
+  .btn-gold {
+    @apply inline-flex items-center gap-2 bg-gold text-paper py-2.5 pr-4 pl-3 rounded-sm text-sm font-medium ring-1 ring-gold hover:opacity-90 transition-opacity;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 border border-line text-charcoal py-2.5 px-5 rounded-sm text-sm font-medium hover:bg-stone transition-colors;
+  }
+  .card-line {
+    @apply bg-paper border border-line p-8 transition-all hover:border-gold/40 hover:shadow-card;
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
