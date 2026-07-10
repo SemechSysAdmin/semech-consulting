@@ -10,11 +10,20 @@ export default defineConfig({
     tanstackStart({
       spa: {
         enabled: true,
+        maskPath: "/app-shell", // shell renders using this path instead of "/"
         prerender: {
-          crawlLinks: true,
+          enabled: true,
+          crawlLinks: false,
           retryCount: 3,
         },
       },
+      prerender: {
+        enabled: true,
+        crawlLinks: true,
+        autoSubfolderIndex: true,
+        retryCount: 3,
+      },
+      pages: [{ path: "/", prerender: { enabled: true, outputPath: "/index.html" } }],
     }),
     react(),
     tailwindcss(),
