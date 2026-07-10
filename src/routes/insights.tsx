@@ -3,9 +3,18 @@ import { Search } from "lucide-react";
 import { useState } from "react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { CtaSection } from "@/components/site/CtaSection";
-import { Helmet } from "react-helmet-async";
+import { buildHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/insights")({
+  head: () =>
+    buildHead({
+      title: "Insights Semech Consult",
+      description:
+        "Research, briefings and executive perspectives from Semech Consult on strategy, technology and the African enterprise.",
+      ogTitle: "Insights & Publications Semech",
+      ogDescription: "Briefings on strategy, technology and the African enterprise.",
+      path: "/insights",
+    }),
   component: InsightsPage,
 });
 
@@ -74,22 +83,6 @@ function InsightsPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Insights Semech Consult</title>
-        <meta
-          name="description"
-          content="Research, briefings and executive perspectives from Semech Consult on strategy, technology and the African enterprise."
-        />
-
-        <meta property="og:title" content="Insights & Publications Semech" />
-        <meta
-          property="og:description"
-          content="Briefings on strategy, technology and the African enterprise."
-        />
-        <meta property="og:url" content="/insights" />
-
-        <link rel="canonical" href="/insights" />
-      </Helmet>
       <PageHeader
         eyebrow="Insights"
         title="Briefings on strategy, technology and the African enterprise."

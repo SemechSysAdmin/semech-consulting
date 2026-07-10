@@ -17,9 +17,18 @@ import {
 } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { CtaSection } from "@/components/site/CtaSection";
-import { Helmet } from "react-helmet-async";
+import { buildHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/services")({
+  head: () =>
+    buildHead({
+      title: "Services Semech Consult",
+      description:
+        "Strategy, technology, energy, GIS, data and operations services delivered by Semech Consult across West Africa.",
+      ogTitle: "Consulting Services Semech",
+      ogDescription: "End-to-end advisory for ambitious organisations.",
+      path: "/services",
+    }),
   component: ServicesPage,
 });
 
@@ -133,26 +142,10 @@ const services = [
 function ServicesPage() {
   return (
     <>
-      <Helmet>
-        <title>Services — Semech Consult</title>
-        <meta
-          name="description"
-          content="Strategy, technology, energy, GIS, data and operations services delivered by Semech Consult across West Africa."
-        />
-
-        <meta property="og:title" content="Consulting Services — Semech" />
-        <meta
-          property="og:description"
-          content="End-to-end advisory for ambitious organisations."
-        />
-        <meta property="og:url" content="/services" />
-
-        <link rel="canonical" href="/services" />
-      </Helmet>
       <PageHeader
         eyebrow="Our Services"
         title="Advisory across the full enterprise stack."
-        description="Thirteen interlocking practice areas designed to deliver compound business impact — from boardroom strategy to engineering execution."
+        description="Thirteen interlocking practice areas designed to deliver compound business impact from boardroom strategy to engineering execution."
       />
 
       <section className="bg-paper py-24">

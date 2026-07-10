@@ -17,11 +17,28 @@ import {
 } from "lucide-react";
 import heroImg from "@/assets/hero-skyscraper.jpg";
 import aboutImg from "@/assets/about-leadership.jpg";
-
 import { CtaSection } from "@/components/site/CtaSection";
-import { Helmet } from "react-helmet-async";
+import { buildHead, absoluteUrl } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
+  head: () =>
+    buildHead({
+      title: "Semech Consult Strategy, Technology & Energy Advisory",
+      description:
+        "Premium consulting firm in Ghana and Nigeria. Strategy, digital transformation, energy advisory, GIS intelligence and data solutions for the modern enterprise.",
+      ogTitle: "Semech Consult Strategy & Technology Advisory",
+      ogDescription:
+        "Driving business growth through strategic consulting and innovation across West Africa.",
+      path: "/",
+      jsonLd: {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        name: "Semech Consult",
+        url: absoluteUrl("/"),
+        logo: absoluteUrl("/assets/logo.jpg"),
+        description: "Premium consulting firm in Ghana and Nigeria...",
+      },
+    }),
   component: HomePage,
 });
 
@@ -124,22 +141,6 @@ const testimonials = [
 function HomePage() {
   return (
     <>
-      <Helmet>
-        <title>Semech Consult Strategy, Technology & Energy Advisory</title>
-        <meta
-          name="description"
-          content="Premium consulting firm in Ghana and Nigeria. Strategy, digital transformation, energy advisory, GIS intelligence and data solutions for the modern enterprise."
-        />
-
-        <meta property="og:title" content="Semech Consult Strategy & Technology Advisory" />
-        <meta
-          property="og:description"
-          content="Driving business growth through strategic consulting and innovation across West Africa."
-        />
-        <meta property="og:url" content="/" />
-
-        <link rel="canonical" href="/" />
-      </Helmet>
       {/* Hero */}
       <section className="relative overflow-hidden bg-navy text-paper">
         <img

@@ -2,9 +2,17 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Linkedin } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { CtaSection } from "@/components/site/CtaSection";
-import { Helmet } from "react-helmet-async";
+import { buildHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/team")({
+  head: () =>
+    buildHead({
+      title: "Team Semech Consult",
+      description: "Meet the executive team and senior consultants behind Semech Consult.",
+      ogTitle: "Our Team Semech",
+      ogDescription: "Senior advisors with deep cross-sector and technology pedigree.",
+      path: "/team",
+    }),
   component: TeamPage,
 });
 
@@ -63,22 +71,6 @@ const initials = (n: string) =>
 function TeamPage() {
   return (
     <>
-      <Helmet>
-        <title>Team Semech Consult</title>
-        <meta
-          name="description"
-          content="Meet the executive team and senior consultants behind Semech Consult."
-        />
-
-        <meta property="og:title" content="Our Team Semech" />
-        <meta
-          property="og:description"
-          content="Senior advisors with deep cross-sector and technology pedigree."
-        />
-        <meta property="og:url" content="/team" />
-
-        <link rel="canonical" href="/team" />
-      </Helmet>
       <PageHeader
         eyebrow="Leadership"
         title="The senior advisors behind Semech Consult."

@@ -12,9 +12,18 @@ import {
 } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { CtaSection } from "@/components/site/CtaSection";
-import { Helmet } from "react-helmet-async";
+import { buildHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/industries")({
+  head: () =>
+    buildHead({
+      title: "Industries Semech Consult",
+      description:
+        "Sector expertise across energy, government, finance, infrastructure, manufacturing and more.",
+      ogTitle: "Industries Served Semech",
+      ogDescription: "Deep sector knowledge across the West African economy.",
+      path: "/industries",
+    }),
   component: IndustriesPage,
 });
 
@@ -69,22 +78,6 @@ const industries = [
 function IndustriesPage() {
   return (
     <>
-      <Helmet>
-        <title>Industries Semech Consult</title>
-        <meta
-          name="description"
-          content="Sector expertise across energy, government, finance, infrastructure, manufacturing and more."
-        />
-
-        <meta property="og:title" content="Industries Served Semech" />
-        <meta
-          property="og:description"
-          content="Deep sector knowledge across the West African economy."
-        />
-        <meta property="og:url" content="/industries" />
-
-        <link rel="canonical" href="/industries" />
-      </Helmet>
       <PageHeader
         eyebrow="Industries"
         title="Sector depth where it counts."

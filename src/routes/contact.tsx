@@ -3,9 +3,17 @@ import { Mail, Phone, MapPin, Clock, MessageCircle, Send } from "lucide-react";
 import { useState } from "react";
 import { z } from "zod";
 import { PageHeader } from "@/components/site/PageHeader";
-import { Helmet } from "react-helmet-async";
+import { buildHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
+  head: () =>
+    buildHead({
+      title: "Contact Semech Consult",
+      description:
+        "Get in touch with Semech Consult to discuss a consulting engagement across Ghana, Nigeria or the wider region.",
+      ogDescription: "Schedule a consultation with our advisory team.",
+      path: "/contact",
+    }),
   component: ContactPage,
 });
 
@@ -59,19 +67,6 @@ function ContactPage() {
 
   return (
     <>
-      <Helmet>
-        <title>Contact Semech Consult</title>
-        <meta
-          name="description"
-          content="Get in touch with Semech Consult to discuss a consulting engagement across Ghana, Nigeria or the wider region."
-        />
-
-        <meta property="og:title" content="Contact Semech Consult" />
-        <meta property="og:description" content="Schedule a consultation with our advisory team." />
-        <meta property="og:url" content="/contact" />
-
-        <link rel="canonical" href="/contact" />
-      </Helmet>
       <PageHeader
         eyebrow="Contact"
         title="Let's discuss your next engagement."

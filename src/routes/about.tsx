@@ -3,31 +3,24 @@ import { Award, Compass, Globe2, Sparkles, Target, Users } from "lucide-react";
 import { PageHeader } from "@/components/site/PageHeader";
 import { CtaSection } from "@/components/site/CtaSection";
 import aboutImg from "@/assets/about-leadership.jpg";
-import { Helmet } from "react-helmet-async";
+import { buildHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/about")({
+  head: () =>
+    buildHead({
+      title: "About Semech Consult",
+      description:
+        "Learn how Semech Consult delivers premium technology-driven advisory across Ghana, Nigeria and the wider West African market.",
+      ogDescription:
+        "A premium consulting firm built on rigour, technology and measurable enterprise impact.",
+      path: "/about",
+    }),
   component: AboutPage,
 });
 
 function AboutPage() {
   return (
     <>
-      <Helmet>
-        <title>About Semech Consult</title>
-        <meta
-          name="description"
-          content="Learn how Semech Consult delivers premium technology-driven advisory across Ghana, Nigeria and the wider West African market."
-        />
-
-        <meta property="og:title" content="About Semech Consult" />
-        <meta
-          property="og:description"
-          content="A premium consulting firm built on rigour, technology and measurable enterprise impact."
-        />
-        <meta property="og:url" content="/about" />
-
-        <link rel="canonical" href="/about" />
-      </Helmet>
       <PageHeader
         eyebrow="About Semech"
         title="A consulting practice built for the modern African enterprise."
