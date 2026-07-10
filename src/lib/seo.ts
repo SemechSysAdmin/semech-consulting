@@ -23,7 +23,7 @@ export function buildHead({
   jsonLd,
 }: SeoInput) {
   const url = absoluteUrl(path);
-  const ogImage = absoluteUrl(image ?? "/assets/hero-skyscraper.jpg");
+  const ogImage = absoluteUrl(image ?? "/assets/og-image.jpg");
   return {
     meta: [
       { title },

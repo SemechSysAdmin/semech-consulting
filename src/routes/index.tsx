@@ -35,7 +35,7 @@ export const Route = createFileRoute("/")({
         "@type": "Organization",
         name: "Semech Consult",
         url: absoluteUrl("/"),
-        logo: absoluteUrl("/assets/logo.jpg"),
+        logo: absoluteUrl("/logo.jpg"),
         description: "Premium consulting firm in Ghana and Nigeria...",
       },
     }),
